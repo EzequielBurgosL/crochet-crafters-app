@@ -19,5 +19,6 @@ module.exports = {
     'no-unused-vars': 'off',
     'generator-star-spacing': ['error', { before: false, after: true }],
     'no-useless-constructor': 'off',
+    'new-cap': 'off'
   },
 };
