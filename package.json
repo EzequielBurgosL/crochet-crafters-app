@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "start:dev": "node dist/server.js --watch",
+    "start": "npm run build && npm run serve",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "serve": "node dist/server.js",
     "test": "jest",
     "prepare": "husky install",
     "lint:fix": "eslint --fix ./src/**/*.ts",
