@@ -1,6 +1,6 @@
 ## Production
 
-URL: https://planificapistas-ddd-cqrs.onrender.com/api/v1/ping
+URL: https://crochet-crafters.onrender.com/api/v1/ping
 
 ## Sonar status
 
