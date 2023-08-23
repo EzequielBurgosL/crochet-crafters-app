@@ -1,23 +1,23 @@
 export class Result<T> {
   public isSuccess: boolean;
-  public error: string;
-  private _value: T;
+  public errorMessage: string;
+  private _value?: T;
 
-  public constructor(isSuccess: boolean, error?: string, value?: T) {
-    if (isSuccess && error) {
+  public constructor(isSuccess: boolean, errorMessage: string = '', value?: T) {
+    if (isSuccess && errorMessage) {
       throw new Error(
         'InvalidOperation: A result cannot be successful and contain an error',
       );
     }
 
-    if (!isSuccess && !error) {
+    if (!isSuccess && !errorMessage) {
       throw new Error(
         'InvalidOperation: A failing result needs to contain an error message',
       );
     }
 
     this.isSuccess = isSuccess;
-    this.error = error;
+    this.errorMessage = errorMessage;
     this._value = value;
 
     Object.freeze(this);
@@ -30,19 +30,23 @@ export class Result<T> {
       );
     }
 
+    if (!this._value) {
+      throw new Error('Value is not defined. Use "errorValue" instead.');
+    }
+
     return this._value;
   }
 
   public errorValue(): string {
-    return this.error;
+    return this.errorMessage;
   }
 
-  public static ok<U>(value?: U): Result<U> {
-    return new Result<U>(true, null, value);
+  public static ok<U>(value: U): Result<U> {
+    return new Result<U>(true, '', value);
   }
 
-  public static fail<U>(error: any): Result<U> {
-    return new Result<U>(false, error);
+  public static fail<U>(errorMessage: any): Result<U> {
+    return new Result<U>(false, errorMessage);
   }
 
   public static combine(results: Result<any>[]): Result<any> {
@@ -52,7 +56,7 @@ export class Result<T> {
       }
     }
 
-    return Result.ok();
+    return Result.ok(true);
   }
 }
 
