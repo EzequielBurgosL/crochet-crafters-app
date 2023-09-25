@@ -1,4 +1,4 @@
-interface ValueObjectProps {
+export interface ValueObjectProps {
   [index: string]: any;
 }
 
@@ -22,7 +22,7 @@ export abstract class ValueObject<T extends ValueObjectProps> {
   }
 }
 
-function shallowEqual(
+export function shallowEqual(
   newObj: Record<string, any>,
   prevObj: Record<string, any>,
 ): boolean {

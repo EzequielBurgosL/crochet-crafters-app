@@ -4,7 +4,7 @@ import { DomainEvent } from './DomainEvents';
 
 export class DomainEvents {
   private static handlersMap = {};
-  private static markedAggregates: AggregateRoot<any>[] = [];
+  public static markedAggregates: AggregateRoot<any>[] = [];
 
   public static markAggregateForDispatch(aggregate: AggregateRoot<any>): void {
     const aggregateFound = Boolean(this.findMarkedAggregateByID(aggregate.id));
@@ -69,7 +69,7 @@ export class DomainEvents {
     this.markedAggregates = [];
   }
 
-  private static dispatch(event: DomainEvent): void {
+  public static dispatch(event: DomainEvent): void {
     const eventClassName: string = event.constructor.name;
 
     if (this.handlersMap[eventClassName]) {
