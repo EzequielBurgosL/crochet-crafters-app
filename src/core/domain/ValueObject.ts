@@ -26,11 +26,15 @@ export function shallowEqual(
   newObj: Record<string, any>,
   prevObj: Record<string, any>,
 ): boolean {
+  if (Object.keys(newObj).length !== Object.keys(prevObj).length) {
+    return false;
+  }
+
   for (const key in newObj) {
     if (newObj[key] !== prevObj[key]) {
-      return true;
+      return false;
     }
   }
 
-  return false;
+  return true;
 }

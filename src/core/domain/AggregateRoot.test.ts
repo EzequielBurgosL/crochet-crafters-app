@@ -1,7 +1,16 @@
 import { UniqueEntityID } from './UniqueEntityID';
-import { domainEvents, mockAggregate, mockDomainEvent, TestAggregateRoot } from './__fixtures__';
+import {
+  domainEvents,
+  mockAggregate,
+  mockDomainEvent,
+  TestAggregateRoot,
+} from './__fixtures__';
 
 describe('AggregateRoot', () => {
+  beforeEach(() => {
+    mockAggregate.clearEvents();
+  });
+
   it('should create an instance with the provided value', () => {
     const props = { name: 'John' };
     const id = new UniqueEntityID();

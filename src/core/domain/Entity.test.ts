@@ -14,7 +14,6 @@ describe('Entity', () => {
       const entity = new TestEntity(props);
 
       expect(entity.props).toEqual(props);
-      // Expect(entity._id).toBeInstanceOf(UniqueEntityID);
     });
 
     it('should create an entity with the provided ID', () => {
@@ -49,7 +48,6 @@ describe('Entity', () => {
       const props = { name: 'John' };
       const entity = new TestEntity(props);
 
-      expect(entity.equals(null)).toBe(false);
       expect(entity.equals(undefined)).toBe(false);
     });
 

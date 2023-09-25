@@ -3,7 +3,7 @@ import { UniqueEntityID } from '../UniqueEntityID';
 import { DomainEvent } from './DomainEvents';
 
 export class DomainEvents {
-  private static handlersMap = {};
+  private static handlersMap: any = {};
   public static markedAggregates: AggregateRoot<any>[] = [];
 
   public static markAggregateForDispatch(aggregate: AggregateRoot<any>): void {

@@ -1,58 +1,62 @@
-import { shallowEqual, ValueObject, ValueObjectProps } from './ValueObject';
+import { shallowEqual, ValueObject } from './ValueObject'; // Replace 'path-to-your-code' with the actual path to your code
 
-class TestValueObject extends ValueObject<ValueObjectProps> {
-  constructor(props: ValueObjectProps) {
+class TestValueObject extends ValueObject<{ name: string; age: number }> {
+  constructor(props: { name: string; age: number }) {
     super(props);
   }
 }
 
 describe('ValueObject', () => {
-  describe('equals', () => {
-    it('should return true when two value objects have equal props', () => {
-      const props1 = { id: 1, name: 'John' };
-      const props2 = { id: 1, name: 'John' };
-      const vo1 = new TestValueObject(props1);
-      const vo2 = new TestValueObject(props2);
+  it('should create an instance with the provided props', () => {
+    const props = { name: 'John', age: 30 };
+    const valueObject = new TestValueObject(props);
+    expect(valueObject.props).toEqual(props);
+  });
 
-      expect(vo1.equals(vo2)).toBe(true);
-    });
+  it('should return true when comparing two equal value objects', () => {
+    const props1 = { name: 'John', age: 30 };
+    const props2 = { name: 'John', age: 30 };
+    const vo1 = new TestValueObject(props1);
+    const vo2 = new TestValueObject(props2);
 
-    it('should return false when two value objects have different props', () => {
-      const props1 = { id: 1, name: 'John' };
-      const props2 = { id: 2, name: 'Alice' };
-      const vo1 = new TestValueObject(props1);
-      const vo2 = new TestValueObject(props2);
+    expect(vo1.equals(vo2)).toBe(true);
+  });
 
-      expect(vo1.equals(vo2)).toBe(false);
-    });
+  it('should return false when comparing with null or undefined', () => {
+    const props = { name: 'John', age: 30 };
+    const valueObject = new TestValueObject(props);
 
-    it('should return false when comparing with null or undefined', () => {
-      const props1 = { id: 1, name: 'John' };
-      const vo1 = new TestValueObject(props1);
+    expect(valueObject.equals(undefined)).toBe(false);
+  });
 
-      expect(vo1.equals(undefined)).toBe(false);
-    });
+  it('should return false when comparing with a different value object', () => {
+    const props1 = { name: 'John', age: 30 };
+    const props2 = { name: 'Alice', age: 25 };
+    const vo1 = new TestValueObject(props1);
+    const vo2 = new TestValueObject(props2);
+
+    expect(vo1.equals(vo2)).toBe(false);
   });
 });
 
 describe('shallowEqual', () => {
   it('should return true when two objects have shallow equal properties', () => {
-    const obj1 = { id: 1, name: 'John' };
-    const obj2 = { id: 1, name: 'John' };
+    const obj1 = { name: 'John', age: 30 };
+    const obj2 = { name: 'John', age: 30 };
 
     expect(shallowEqual(obj1, obj2)).toBe(true);
   });
 
   it('should return false when two objects have different properties', () => {
-    const obj1 = { id: 1, name: 'John' };
-    const obj2 = { id: 2, name: 'Alice' };
+    const obj1 = { name: 'John', age: 30 };
+    const obj2 = { name: 'Alice', age: 25 };
 
     expect(shallowEqual(obj1, obj2)).toBe(false);
   });
 
   it('should return false when one object has extra properties', () => {
-    const obj1 = { id: 1, name: 'John' };
-    const obj2 = { id: 1, name: 'John', age: 30 };
+    const obj1 = { name: 'John', age: 30 };
+    const obj2 = { name: 'John', age: 30, address: '123 Main St' };
 
     expect(shallowEqual(obj1, obj2)).toBe(false);
   });
