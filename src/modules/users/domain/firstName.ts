@@ -1,6 +1,6 @@
+import { ValueObject } from '../../../core/domain/ValueObject';
 import { Guard } from '../../../core/logic/Guard';
 import { Result } from '../../../core/logic/Result';
-import { ValueObject } from '../../../core/domain/ValueObject';
 
 interface Props {
   value: string;
@@ -37,7 +37,7 @@ export class FirstName extends ValueObject<Props> {
     );
 
     if (lengthGuardResult.error) {
-      return Result.fail<FirstName>(lengthGuardResult.error);
+      return Result.fail(lengthGuardResult.error);
     }
 
     return Result.ok(new FirstName({ value: firstName }));

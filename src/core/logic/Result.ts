@@ -1,9 +1,9 @@
 export class Result<T> {
   public isSuccess: boolean;
-  public errorMessage: string;
+  public errorMessage?: string;
   private _value?: T;
 
-  public constructor(isSuccess: boolean, errorMessage: string = '', value?: T) {
+  public constructor(isSuccess: boolean, errorMessage?: string, value?: T) {
     if (isSuccess && errorMessage) {
       throw new Error(
         'InvalidOperation: A result cannot be successful and contain an error',
@@ -38,7 +38,7 @@ export class Result<T> {
   }
 
   public errorValue(): string {
-    return this.errorMessage;
+    return this.errorMessage || '';
   }
 
   public static ok<U>(value: U): Result<U> {
