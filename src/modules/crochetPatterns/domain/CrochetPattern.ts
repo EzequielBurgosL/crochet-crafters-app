@@ -1,11 +1,11 @@
-import { Entity } from 'core/domain/Entity';
-import { UniqueEntityID } from 'core/domain/UniqueEntityID';
-import { Guard } from 'core/logic/Guard';
-import { Result } from 'core/logic/Result';
-import { Name } from './Name';
-import { Instructions } from './Instructions';
+import { Entity } from '../../../core/domain/Entity';
+import { UniqueEntityID } from '../../../core/domain/UniqueEntityID';
+import { Guard } from '../../../core/logic/Guard';
+import { Result } from '../../../core/logic/Result';
 import { Category } from './Category';
 import { CrochetPatternId } from './CrochetPatternId';
+import { Instructions } from './Instructions';
+import { Name } from './Name';
 
 interface CrochetPatternProps {
   crochetPatternId: CrochetPatternId;

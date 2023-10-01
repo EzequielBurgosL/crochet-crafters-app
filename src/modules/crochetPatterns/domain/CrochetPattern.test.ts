@@ -1,9 +1,9 @@
-import { CrochetPattern } from './CrochetPattern';
-import { Name } from './Name';
-import { Instructions } from './Instructions';
+import { UniqueEntityID } from '../../../core/domain/UniqueEntityID';
 import { Category, CategoryValue } from './Category';
+import { CrochetPattern } from './CrochetPattern';
 import { CrochetPatternId } from './CrochetPatternId';
-import { UniqueEntityID } from 'core/domain/UniqueEntityID';
+import { Instructions } from './Instructions';
+import { Name } from './Name';
 
 describe('CrochetPattern', () => {
   describe('create', () => {
@@ -43,7 +43,7 @@ describe('CrochetPattern', () => {
 
       expect(crochetPattern.isSuccess).toBe(false);
       expect(crochetPattern.errorMessage).toBe(
-        'Argument instructions cannot be null or undefined.',
+        'instructions is null or undefined',
       );
     });
   });
