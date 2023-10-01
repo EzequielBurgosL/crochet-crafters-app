@@ -21,7 +21,7 @@ describe('Category', () => {
 
       expect(categoryResult.isSuccess).toBe(false);
       expect(categoryResult.errorMessage).toEqual(
-        'Argument category cannot be null or undefined.',
+        'category is null or undefined',
       );
     });
 

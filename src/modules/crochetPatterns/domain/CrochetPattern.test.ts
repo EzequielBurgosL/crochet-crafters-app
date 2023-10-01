@@ -1,19 +1,18 @@
-import { UniqueEntityID } from 'core/domain/UniqueEntityID';
 import { CrochetPattern } from './CrochetPattern';
 import { Name } from './Name';
 import { Instructions } from './Instructions';
-import { Category } from './Category';
+import { Category, CategoryValue } from './Category';
 import { CrochetPatternId } from './CrochetPatternId';
+import { UniqueEntityID } from 'core/domain/UniqueEntityID';
 
 describe('CrochetPattern', () => {
   describe('create', () => {
+    const crochetPatternId = CrochetPatternId.create();
+    const name = Name.create('Sample Pattern').getValue();
+    const instructions = Instructions.create('instructions...').getValue();
+    const category = Category.create(CategoryValue.AMIGURUMI).getValue();
+
     it('should create a CrochetPattern instance with valid properties', () => {
-      const crochetPatternId = CrochetPatternId.create();
-      const name = Name.create('Sample Pattern').getValue();
-      const instructions = Instructions.create(
-        'Sample instructions',
-      ).getValue();
-      const category: Category = Category.AMIGURUMI;
       const props = {
         crochetPatternId,
         name,
@@ -31,25 +30,19 @@ describe('CrochetPattern', () => {
     });
 
     it('should fail to create a CrochetPattern instance with missing properties', () => {
-      const crochetPatternId = new CrochetPatternId();
-      const name = new Name('Sample Pattern');
-      // Missing instructions
-      const category: Category = 'amigurumi';
-
       const crochetPattern = CrochetPattern.create(
         {
           crochetPatternId,
           name,
-          instructions: null, // Missing instructions
+          // @ts-ignore: Missing instructions
+          instructions: null,
           category,
         },
         new UniqueEntityID(),
       );
 
-      expect(crochetPattern.isFailure).toBe(true);
-      expect(crochetPattern.error).toBeInstanceOf(Array);
-      expect(crochetPattern.error).toHaveLength(1);
-      expect(crochetPattern.error[0].message).toBe(
+      expect(crochetPattern.isSuccess).toBe(false);
+      expect(crochetPattern.errorMessage).toBe(
         'Argument instructions cannot be null or undefined.',
       );
     });
