@@ -38,7 +38,7 @@ export class Result<T> {
   }
 
   public errorValue(): string {
-    return this.errorMessage || '';
+    return this.errorMessage ?? '';
   }
 
   public static ok<U>(value: U): Result<U> {
