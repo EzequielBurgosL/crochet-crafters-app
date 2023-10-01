@@ -57,3 +57,5 @@ Seguimiento de Envíos
 **Proceso de Empaque y Envío**: Preparar pedidos para envío, incluyendo la selección de productos, embalaje y generación de etiquetas de envío.
 **Registro de Envíos**: Registrar la información de envío, como números de seguimiento y detalles del transportista.
 **Seguimiento de Envíos**: Proporcionar a los clientes la capacidad de rastrear el estado de sus pedidos a medida que se entregan.
+
+# Bounded context 5: Notificaciones
