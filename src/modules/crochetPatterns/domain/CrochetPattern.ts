@@ -5,8 +5,10 @@ import { Result } from 'core/logic/Result';
 import { Name } from './Name';
 import { Instructions } from './Instructions';
 import { Category } from './Category';
+import { CrochetPatternId } from './CrochetPatternId';
 
 interface CrochetPatternProps {
+  crochetPatternId: CrochetPatternId;
   name: Name;
   instructions: Instructions;
   category: Category;
@@ -17,8 +19,8 @@ export class CrochetPattern extends Entity<CrochetPatternProps> {
     super(props, id);
   }
 
-  get id(): UniqueEntityID {
-    return this._id;
+  get crochetPatternId(): CrochetPatternId {
+    return CrochetPatternId.create(this._id);
   }
 
   get name(): Name {
