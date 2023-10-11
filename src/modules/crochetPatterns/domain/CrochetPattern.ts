@@ -1,26 +1,26 @@
-import { Entity } from '../../../core/domain/Entity';
+import { AggregateRoot } from '../../../core/domain/AggregateRoot';
 import { UniqueEntityID } from '../../../core/domain/UniqueEntityID';
 import { Guard } from '../../../core/logic/Guard';
 import { Result } from '../../../core/logic/Result';
 import { Category } from './Category';
-import { CrochetPatternId } from './CrochetPatternId';
 import { Instructions } from './Instructions';
 import { Name } from './Name';
+import { PatternCreatedEvent } from './events/patternCreatedEvent';
 
 interface CrochetPatternProps {
-  crochetPatternId: CrochetPatternId;
   name: Name;
   instructions: Instructions;
   category: Category;
+  dateAdded?: Date;
 }
 
-export class CrochetPattern extends Entity<CrochetPatternProps> {
+export class CrochetPattern extends AggregateRoot<CrochetPatternProps> {
   private constructor(props: CrochetPatternProps, id?: UniqueEntityID) {
     super(props, id);
   }
 
-  get crochetPatternId(): CrochetPatternId {
-    return CrochetPatternId.create(this._id);
+  get id(): UniqueEntityID {
+    return this._id;
   }
 
   get name(): Name {
@@ -46,6 +46,18 @@ export class CrochetPattern extends Entity<CrochetPatternProps> {
     ]);
 
     if (propsResult.isSuccess) {
+      const dateAdded = props.dateAdded ? props.dateAdded : new Date();
+      const crochetPattern = new CrochetPattern({ ...props, dateAdded }, id);
+      const isNewlyCreated = !!id === false;
+
+      if (isNewlyCreated) {
+        crochetPattern.addDomainEvent(new PatternCreatedEvent({
+          id: crochetPattern.id,
+          dateTimeOccurred: dateAdded,
+          type: 'pattern-created'
+        }));
+      }
+
       return Result.ok<CrochetPattern>(new CrochetPattern(props, id));
     }
 
