@@ -1,6 +1,5 @@
 import { DataTypes, Sequelize } from 'sequelize';
 
-/* eslint-disable new-cap */
 export const CrochetPatternModel = (sequelize: Sequelize) => {
   const CrochetPattern = sequelize.define(
     'crochetPattern',

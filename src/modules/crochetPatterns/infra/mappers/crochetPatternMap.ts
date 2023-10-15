@@ -1,9 +1,9 @@
+import { Category, CategoryValue } from 'modules/crochetPatterns/domain/Category';
 import { CrochetPattern } from 'modules/crochetPatterns/domain/CrochetPattern';
+import { Instructions } from 'modules/crochetPatterns/domain/Instructions';
+import { Name } from 'modules/crochetPatterns/domain/Name';
 import { UniqueEntityID } from '../../../../core/domain/UniqueEntityID';
 import { Mapper } from '../../../../core/infra/Mapper';
-import { Name } from 'modules/crochetPatterns/domain/Name';
-import { Instructions } from 'modules/crochetPatterns/domain/Instructions';
-import { Category, CategoryValue } from 'modules/crochetPatterns/domain/Category';
 
 type RawCrochetPattern = {
   entityId: string;
@@ -19,7 +19,7 @@ export class CrochetPatternMap implements Mapper<CrochetPattern, RawCrochetPatte
       entityId: crochetPattern.id.toString(),
       name: crochetPattern.name.value,
       instructions: crochetPattern.instructions.value,
-      category: crochetPattern.category.value
+      category: crochetPattern.category.value,
     };
   }
 
