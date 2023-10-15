@@ -18,12 +18,13 @@ type BaseQuery = {
 //   }
 // }
 
-export interface CrochetPatternRepository extends Repository<CrochetPattern> { }
+export interface CrochetPatternRepository extends Repository<CrochetPattern> {}
 
 export class SequelizeClientRepository implements CrochetPatternRepository {
   private models: any; // Use sequelize model types
 
   constructor(models: any) {
+    // Remove any
     this.models = models;
   }
 
@@ -63,9 +64,10 @@ export class SequelizeClientRepository implements CrochetPatternRepository {
 
     try {
       if (exists) {
-        const sequelizeCrochetPatternInstance = await CrochetPatternModel.findOne({
-          where: { id: crochetPattern.id.toValue() },
-        });
+        const sequelizeCrochetPatternInstance =
+          await CrochetPatternModel.findOne({
+            where: { id: crochetPattern.id.toValue() },
+          });
 
         await sequelizeCrochetPatternInstance.update(rawCrochetPattern);
       } else {
