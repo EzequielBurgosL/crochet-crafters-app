@@ -1,6 +1,5 @@
-import { DomainEvent } from "../../../../core/domain/events/DomainEvents";
-import { CrochetPatternId } from "../CrochetPatternId";
-import { UniqueEntityID } from "../../../../core/domain/UniqueEntityID";
+import { DomainEvent } from '../../../../core/domain/events/DomainEvents';
+import { UniqueEntityID } from '../../../../core/domain/UniqueEntityID';
 
 type Props = {
   id: UniqueEntityID;

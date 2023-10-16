@@ -18,9 +18,9 @@ type BaseQuery = {
 //   }
 // }
 
-export interface CrochetPatternRepository extends Repository<CrochetPattern> {}
+export interface CrochetPatternRepository extends Repository<CrochetPattern> { }
 
-export class SequelizeClientRepository implements CrochetPatternRepository {
+export class SequelizeCrochetPatternRepository implements CrochetPatternRepository {
   private models: any; // Use sequelize model types
 
   constructor(models: any) {
@@ -48,17 +48,17 @@ export class SequelizeClientRepository implements CrochetPatternRepository {
     return result;
   }
 
-  public async exists(crochetPattern: CrochetPattern): Promise<boolean> {
+  public async exists(id: UniqueEntityID): Promise<boolean> {
     const baseQuery = this.createBaseQuery();
-    baseQuery.where.id = crochetPattern.id.toValue().toString();
-    const result = await this.models.Client.findOne(baseQuery);
+    baseQuery.where.id = id.toValue().toString();
+    const result = await this.models.CrochetPattern.findOne(baseQuery);
 
     return Boolean(result) === true;
   }
 
   public async save(crochetPattern: CrochetPattern): Promise<void> {
     const CrochetPatternModel = this.models.CrochetPattern;
-    const exists = await this.exists(crochetPattern);
+    const exists = await this.exists(crochetPattern.id);
     const map = new CrochetPatternMap();
     const rawCrochetPattern = map.toPersistence(crochetPattern);
 

@@ -1,9 +1,9 @@
-import { Category, CategoryValue } from 'modules/crochetPatterns/domain/Category';
-import { CrochetPattern } from 'modules/crochetPatterns/domain/CrochetPattern';
-import { Instructions } from 'modules/crochetPatterns/domain/Instructions';
-import { Name } from 'modules/crochetPatterns/domain/Name';
 import { UniqueEntityID } from '../../../../core/domain/UniqueEntityID';
 import { Mapper } from '../../../../core/infra/Mapper';
+import { Category, CategoryValue } from '../../domain/Category';
+import { CrochetPattern } from '../../domain/CrochetPattern';
+import { Instructions } from '../../domain/Instructions';
+import { Name } from '../../domain/Name';
 
 type RawCrochetPattern = {
   entityId: string;

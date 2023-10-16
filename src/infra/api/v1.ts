@@ -1,8 +1,10 @@
-import { Router } from 'express';
-import { testRouter } from '../../modules/ping/infra/http/routes';
+import express from 'express';
+import { crochetPatternRouter } from '../../modules/crochetPatterns/infra/http/routes';
 
-const v1Router = Router();
+const v1Router = express.Router();
 
-v1Router.use('/ping', testRouter);
+v1Router.use('/crochet-pattern', crochetPatternRouter);
+
+// All routes go here
 
 export { v1Router };

@@ -1,6 +1,6 @@
 import { CrochetPatternModel } from '../models/sequelize/crochetPattern';
-import { SequelizeClientRepository } from './SequelizeClientRepository';
+import { SequelizeCrochetPatternRepository } from './SequelizeCrochetPatternRepository';
 
-const clientRepository = new SequelizeClientRepository(CrochetPatternModel);
+const crochetPatternRepository = new SequelizeCrochetPatternRepository(CrochetPatternModel);
 
-export { clientRepository };
+export { crochetPatternRepository };
