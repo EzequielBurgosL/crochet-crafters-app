@@ -9,7 +9,8 @@
     "prepare": "husky install",
     "lint:fix": "eslint --fix ./src/**/*.ts",
     "editor:fix": "editorconfig-tools fix",
-    "ci:test": "npm test -- --coverage --watchAll=false"
+    "ci:test": "npm test -- --coverage --watchAll=false",
+    "start:db": "./scripts/start-dev-db.sh"
   },
   "repository": {
     "type": "git",
