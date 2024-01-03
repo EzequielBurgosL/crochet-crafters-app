@@ -43,10 +43,14 @@ Para la implementación debemos usar el siguiente Stack Tecnológico:
 - **TypeScript**: Superset del lenguaje de programación de JavaScript. **No debemos tener `any` en nuestra implementación**
 - **Express** o **NestJS**: Como librería/framework para la implementación del API REST
 - **GraphQL**: Como librería para la implementación del API GraphQL
-- **Redis**: Como servidor de cache para la implementación de CQRS. Podéis encontrar un cloud gratuito en el propio redis. Podéis usar otras alternativas que encontréis. [https://redis.com/redis-enterprise-cloud/pricing/](https://redis.com/redis-enterprise-cloud/pricing/]
+- **Redis**: Como servidor de cache para la implementación de CQRS. Podéis encontrar un cloud gratuito en el propio redis. Podéis usar otras alternativas que encontréis. [https://redis.com/redis-enterprise-cloud/pricing/](https://redis.com/redis-enterprise-cloud/pricing/)
 - **Kaftka** o **RabbitMQ** o **nats**: Para la implementación de un bus de eventos en la implementación de Event Driven Architecture. Buscad un cloud gratuito de instancias. Por ejemplo para kaftka: [https://www.conduktor.io/pricing/](https://www.conduktor.io/pricing/)
 - **MongoDB** o otra **SQL Database (PostgreSQL, MySQL, ...)**: Como DDBB, podéis elegir una, otra o ambas. Podéis buscar un cloud gratuito para el servidor, como por ejemplo [Atlas](https://www.mongodb.com/es/atlas/database)
 - **bitloops** (OPTIONAL): podéis usar esta librería para la ayuda en la implementación de DDD.
+
+# Bonus:
+
+- Docker, K8s, nginx, terraform.
 
 ## Entrega
 
