@@ -1,4 +1,16 @@
-## Production
+# DDD and CQRS Project [Work in progress]
+
+Back-end project that uses tactical DDD and CQRS.
+
+Some of the principles applied are:
+Clean Code
+Design principles (SOLID and YAGNI mainly)
+Design patterns
+Clean Architecture (DDD, CQRS and Event Driven Architecture)
+TypeScript
+Testing with Jest
+
+## Production URL
 
 URL: https://crochet-crafters.onrender.com/api/v1/ping
 
